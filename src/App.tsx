@@ -14,12 +14,12 @@ export type Goal = {
 function App() {
   const [goals, setGoals] = useState<Goal[]>([])
 
-  function handleAddGoal() {
+  function handleAddGoal(enteredGoal: string, enteredSummary: string) {
     setGoals((prevGoals) => {
       const newGoal: Goal = {
         id: Math.random(),
-        title: "Master React + TypeScript",
-        desc: "I shall gain a new super-power💪",
+        title: enteredGoal,
+        desc: enteredSummary,
       }
       return [...prevGoals, newGoal]
     })
@@ -37,7 +37,7 @@ function App() {
     >
       <main className="flex flex-col gap-8">
         <Header image={{ src: headerImg, alt: "Profile Pic" }} />
-        <NewGoal />
+        <NewGoal onAddGoal={handleAddGoal} />
         <GoalList goals={goals} onDelete={handleDeleteGoal} />
       </main>
     </div>
