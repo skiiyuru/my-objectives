@@ -1,8 +1,7 @@
 import { useState } from "react"
 import headerImg from "./assets/SK-Avatar.jpeg"
-import Goal from "./components/Goal.tsx"
-import Header from "./components/Header.tsx"
 import GoalList from "./components/GoalList.tsx"
+import Header from "./components/Header.tsx"
 import NewGoal from "./components/NewGoal.tsx"
 
 export type Goal = {
@@ -32,12 +31,13 @@ function App() {
 
   return (
     <div
-      className="h-screen bg-zinc-900 text-white p-4 md:pt-8  
-    fixed inset-0 flex justify-center"
+      className="h-screen bg-zinc-900 text-white  
+    fixed inset-0 flex justify-center overflow-y-auto"
     >
-      <main className="flex flex-col gap-8">
+      <main className="flex flex-col gap-8 p-4 md:py-8 ">
         <Header image={{ src: headerImg, alt: "Profile Pic" }} />
         <NewGoal onAddGoal={handleAddGoal} />
+
         <GoalList goals={goals} onDelete={handleDeleteGoal} />
       </main>
     </div>

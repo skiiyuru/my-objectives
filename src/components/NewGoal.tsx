@@ -26,7 +26,7 @@ function Label(props: LabelProps) {
 const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   return (
     <input
-      className="text-sm rounded-lg w-full p-2.5 bg-gray-700 
+      className="text-sm font-body rounded-lg w-full p-2.5 bg-gray-700 
       border-gray-600 placeholder-gray-400 text-white 
       focus:ring-purple-500 focus:border-purple-500"
       ref={ref}
