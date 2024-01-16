@@ -3,6 +3,7 @@ import headerImg from "./assets/SK-Avatar.jpeg"
 import GoalList from "./components/GoalList.tsx"
 import Header from "./components/Header.tsx"
 import NewGoal from "./components/NewGoal.tsx"
+import Container from "./components/Container.tsx"
 
 export type Goal = {
   id: number
@@ -37,8 +38,13 @@ function App() {
       <main className="flex flex-col gap-8 p-4 md:py-8 ">
         <Header image={{ src: headerImg, alt: "Profile Pic" }} />
         <NewGoal onAddGoal={handleAddGoal} />
-
         <GoalList goals={goals} onDelete={handleDeleteGoal} />
+        <Container
+          as={"footer"}
+          className="font-body font-medium text-gray-500"
+        >
+          Built by @skiiyuru
+        </Container>
       </main>
     </div>
   )

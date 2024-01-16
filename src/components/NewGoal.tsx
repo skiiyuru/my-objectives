@@ -1,39 +1,9 @@
-import {
-  type PropsWithChildren,
-  type FormEvent,
-  useRef,
-  forwardRef,
-  type InputHTMLAttributes,
-  type LabelHTMLAttributes,
-} from "react"
-
-type LabelProps = PropsWithChildren<LabelHTMLAttributes<HTMLLabelElement>>
-
-type InputProps = InputHTMLAttributes<HTMLInputElement>
+import { useRef, type FormEvent } from "react"
+import Input from "./Input"
 
 type NewGoalProps = {
   onAddGoal: (enteredGoal: string, enteredSummary: string) => void
 }
-
-function Label(props: LabelProps) {
-  return (
-    <label className="block mb-1 text-sm font-medium text-white" {...props}>
-      {props.children}
-    </label>
-  )
-}
-
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return (
-    <input
-      className="text-sm font-body rounded-lg w-full p-2.5 bg-gray-700 
-      border-gray-600 placeholder-gray-400 text-white 
-      focus:ring-purple-500 focus:border-purple-500"
-      ref={ref}
-      {...props}
-    />
-  )
-})
 
 export default function NewGoal({ onAddGoal }: NewGoalProps) {
   const goal = useRef<HTMLInputElement>(null)
@@ -52,14 +22,9 @@ export default function NewGoal({ onAddGoal }: NewGoalProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div>
-        <Label htmlFor="goal">Your goal</Label>
-        <Input id="goal" type="text" ref={goal} />
-      </div>
-      <div>
-        <Label htmlFor="desc">Short summary</Label>
-        <Input id="summary" type="text" ref={summary} />
-      </div>
+      <Input id="goal" label="Your goal" type="text" ref={goal} />
+      <Input id="summary" label="Short summary" type="text" ref={summary} />
+
       <button
         type="submit"
         className="font-medium rounded-md text-sm w-full sm:w-auto 

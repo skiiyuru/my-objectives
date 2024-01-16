@@ -14,7 +14,9 @@ export default function GoalList({ goals, onDelete }: GoalListProps) {
   return (
     <div className="flex flex-col gap-4">
       {goals.length >= 4 && (
-        <InfoBox mode="warning">Don't put too much on your plate</InfoBox>
+        <InfoBox mode="warning" severity={600}>
+          Don't put too much on your plate
+        </InfoBox>
       )}
       {goals.map((goal) => (
         <Goal id={goal.id} key={goal.id} title={goal.title} onDelete={onDelete}>
